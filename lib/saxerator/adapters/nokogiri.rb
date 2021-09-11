@@ -8,7 +8,9 @@ module Saxerator
 
       def self.parse(source, reader)
         parser = ::Nokogiri::XML::SAX::Parser.new(new(reader))
-        parser.parse(source)
+        parser.parse(source) do |context|
+          context.recovery = true
+        end
       end
 
       def initialize(reader)
