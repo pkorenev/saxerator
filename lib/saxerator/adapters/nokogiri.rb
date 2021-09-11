@@ -32,7 +32,8 @@ module Saxerator
       end
 
       def error(message)
-        raise Saxerator::ParseException, message
+        Rails.logger.error("Unexpected error while parsing xml file: #{message}")
+        #raise Saxerator::ParseException, message
       end
 
       private
